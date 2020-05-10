@@ -6,11 +6,26 @@
     <title>Questionnaire</title>
 </head>
 <body onload="onStart()">
-<button onclick="startQuestionnaire()" id="startButton">kysy</button>
-<p id="questionBlock"></p>
-<p></p>
-<p id="answerBlock"></p>
-<div id="endBlock"></div>
+
+<div id="startBlock">
+    <h1>Tervetuloa</h1>
+    <p>Vastaa kysymyksiin parhaan kykysi mukaan.</p>
+    <button onclick="startQuestionnaire()" >Aloita</button>
+</div>
+
+<div id="questionsBlock">
+<h1>Kysymys</h1>
+    <p id="questionline"></p>
+    <p id="answerBlock"></p>
+    
+</div>
+
+<div id="endSummary">
+    <h1>Kooste</h1>
+    <div id="endBlock"></div>
+    <button onclick="startQuestionnaire()" >Aloita alusta</button>
+</div>
+
 <script src="myClasses.js"></script>
 <script src="main.js"></script>
 </body>

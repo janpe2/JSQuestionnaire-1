@@ -1,20 +1,24 @@
 var questions = []
 
-var questionBlock;
+var questionline;
 var answerBlock;
 var endBlock;
 
 var currentQuestionID =0;
 var answerIndexes = new Array();
+
+
 function onStart(){
 var q1 = new Question("Paljonko kello?", ["aika paljon","Todella paljon", "aaaah!"]);
 var q2 = new Question("Voiko kalaa syödä?", ["kyllä voi","ei voi"]);
-questions.push(q1);
-questions.push(q2);
+questions.push(q1,q2);
 
-questionBlock =  document.getElementById("questionBlock")
+
+questionline =  document.getElementById("questionline")
 answerBlock =  document.getElementById("answerBlock")
 endBlock = document.getElementById("endBlock")
+document.getElementById("questionsBlock").hidden = true;
+document.getElementById("endSummary").hidden = true;
 }
 
 function AskNextQuestion(){
@@ -23,28 +27,36 @@ function AskNextQuestion(){
         showQuestion(question)
     }
     else{
-        document.getElementById("startButton").hidden = false;
-        let answerIndexcounter = 0
-        questions.forEach(element => {
-            endBlock.innerHTML += Question.getQuestion(element)
-            +" <P>vastasit: "+Question.getAnswer(element, answerIndexes[answerIndexcounter]) 
-            answerIndexcounter ++;
-        });
+        ShowEndSummary();
     }
+}
+
+function ShowEndSummary(){
+    document.getElementById("startBlock").hidden = true;
+    document.getElementById("questionsBlock").hidden = true;
+    document.getElementById("endSummary").hidden = false;
+   
+    let answerIndexcounter = 0
+    questions.forEach(element => {
+        endBlock.innerHTML += Question.getQuestion(element)
+        +" <P>vastasit: "+Question.getAnswer(element, answerIndexes[answerIndexcounter]) 
+        answerIndexcounter ++;})
 }
 
 function startQuestionnaire(){
     currentQuestionID = 0;
     answerIndexes = new Array();
     endBlock.innerHTML = "";
-    document.getElementById("startButton").hidden = true;
+    document.getElementById("startBlock").hidden = true;
+    document.getElementById("questionsBlock").hidden = false;
+    document.getElementById("endSummary").hidden = true;
     AskNextQuestion();
 
 }
 
 function showQuestion(question){
     
-    questionBlock.innerHTML = question.question;
+    questionline.innerHTML = question.question;
     ShowAnswerOptions(question.answer);
 }
 
@@ -59,6 +71,10 @@ function ShowAnswerOptions(answers){
     });
 }
 
+function CreateAnswerElement(answer){
+    //luodaan elementti joka lisätään kyssäreihin.
+}
+
 function AnswerButtonClicked(index){
     ClearScreen();
     console.log("Button test:"+index);
@@ -68,6 +84,6 @@ function AnswerButtonClicked(index){
 }
 
 function ClearScreen(){
-    questionBlock.innerHTML = "";
+    questionline.innerHTML = "";
     answerBlock.innerHTML = "";
 }
