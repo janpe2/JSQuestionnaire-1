@@ -1,19 +1,21 @@
 @font-face 
 {
-    font-family: AcmeRegular;
+    font-family: Acme;
+    font-weight: normal;
     src: url(Acme-Regular.ttf);
 }
 
 body
 {
-    font-family: AcmeRegular;
+    font-family: Acme;
+    padding: 1em;
 }
 
 :root
 {
     --main-color-1: rgb(184, 218, 250);
     --main-color-2: rgb(234, 248, 169);
-    --shadow-1: 7px 7px 4px grey;
+    --shadow-1: 0px 0px 11px black;
 }
 
 .col
@@ -30,7 +32,7 @@ body
     margin-bottom: 0.40em;
 }
 
-.col-left
+.sidebar-left
 {
     z-index: 2;
     border-bottom-left-radius: 1em;
@@ -44,10 +46,15 @@ body
     z-index: 1;
 }
 
-.col-right
+.sidebar-right
 {
     z-index: 3;
     border-bottom-right-radius: 1em;
+}
+
+h1
+{
+    padding-top: 0.25em;
 }
 
 .header
@@ -99,5 +106,16 @@ button.btn:hover
 
 div.col, div.row
 {
-    margin: 0.40em;
+    margin-top: 0.40em;
+    margin-bottom: 0.40em;
+}
+
+td 
+{
+    padding-right: 1em;
+}
+
+button .fas
+{
+    font-size: 1.25em;
 }
