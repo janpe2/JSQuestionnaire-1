@@ -9,16 +9,16 @@ var answerIndexes = new Array();
 
 
 function onStart(){
-var q1 = new Question("Paljonko kello?", ["aika paljon","Todella paljon", "aaaah!"]);
-var q2 = new Question("Voiko kalaa syödä?", ["kyllä voi","ei voi"]);
-questions.push(q1,q2);
+    var q1 = new Question("Paljonko kello?", ["Aika paljon","Todella paljon", "Aaaah!"]);
+    var q2 = new Question("Voiko kalaa syödä?", ["Kyllä voi", "Ei voi", "Ehkä, mutta maku on paha", "Juuri ja juuri"]);
+    questions.push(q1,q2);
 
 
-questionline =  document.getElementById("questionline")
-answerBlock =  document.getElementById("answerBlock")
-endBlock = document.getElementById("endBlock")
-document.getElementById("questionsBlock").hidden = true;
-document.getElementById("endSummary").hidden = true;
+    questionline =  document.getElementById("questionline")
+    answerBlock =  document.getElementById("answerBlock")
+    endBlock = document.getElementById("endBlock")
+    document.getElementById("questionsBlock").hidden = true;
+    document.getElementById("endSummary").hidden = true;
 }
 
 function AskNextQuestion(){
@@ -36,11 +36,20 @@ function ShowEndSummary(){
     document.getElementById("questionsBlock").hidden = true;
     document.getElementById("endSummary").hidden = false;
    
-    let answerIndexcounter = 0
+    let answerIndexcounter = 0;
+    let html = "<table>";
+
     questions.forEach(element => {
-        endBlock.innerHTML += Question.getQuestion(element)
-        +" <P>vastasit: "+Question.getAnswer(element, answerIndexes[answerIndexcounter]) 
-        answerIndexcounter ++;})
+        html += 
+            "<tr class='answerTableRow'><td>" +
+            Question.getQuestion(element) +
+            "<br>Vastasit: " + 
+            Question.getAnswer(element, answerIndexes[answerIndexcounter]) +
+            "</td></tr>";
+        answerIndexcounter++;
+    });
+
+    endBlock.innerHTML = html + "</table>";
 }
 
 function startQuestionnaire(){
@@ -63,12 +72,17 @@ function showQuestion(question){
 function ShowAnswerOptions(answers){
     //note indexOf does not work, if this is not an array
     var answerArray = Array.from(answers);
+    var html = "<table>";
     
     answerArray.forEach(element => {
-        answerBlock.innerHTML += "<p>"+
-        element+" <button onclick=AnswerButtonClicked("+answerArray.indexOf(element)+")> valitse</button>"
+        html += "<tr class='answerTableRow'><td>" +
+            "<button class='btn btn-primary' onclick=AnswerButtonClicked(" + answerArray.indexOf(element) + 
+            ")> Valitse</button>" + element + "</td></tr>";
         //note no need for " " in onclick
     });
+
+    html += "</table>";
+    answerBlock.innerHTML = html;
 }
 
 function CreateAnswerElement(answer){
@@ -77,7 +91,7 @@ function CreateAnswerElement(answer){
 
 function AnswerButtonClicked(index){
     ClearScreen();
-    console.log("Button test:"+index);
+    //console.log("Button test:"+index);
     answerIndexes.push(index);
     currentQuestionID += 1;
     AskNextQuestion();

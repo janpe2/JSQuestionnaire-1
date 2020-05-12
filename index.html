@@ -4,26 +4,60 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Questionnaire</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" 
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" 
+        crossorigin="anonymous">
+    <link rel="stylesheet" href="myStyles.css"> 
 </head>
 <body onload="onStart()">
 
-<div id="startBlock">
-    <h1>Tervetuloa</h1>
-    <p>Vastaa kysymyksiin parhaan kykysi mukaan.</p>
-    <button onclick="startQuestionnaire()" >Aloita</button>
-</div>
+<div class="container-fluid">
+    <div class="row">
+        <div class="header">
+            <h1 id="headerText">JSQuestionnaire Example</h1>
+            <p>By Jani Pehkonen</p>
+        </div>
+    </div> 
 
-<div id="questionsBlock">
-<h1>Kysymys</h1>
-    <p id="questionline"></p>
-    <p id="answerBlock"></p>
-    
-</div>
+    <div class="row">
+        <div class="col-md-3 sidebar col-left">
+            <h1>Ohjeita</h1>
+            <ul>
+                <li>Aloita</li>
+                <li>Vastaa kysymyksiin</li>
+                <li>Katso yhteenveto</li>
+            </ul>
+        </div>
 
-<div id="endSummary">
-    <h1>Kooste</h1>
-    <div id="endBlock"></div>
-    <button onclick="startQuestionnaire()" >Aloita alusta</button>
+        <div class="col col-center">
+            <div id="startBlock">
+                <h1>Tervetuloa</h1>
+                <p>Vastaa kysymyksiin parhaan kykysi mukaan.</p>
+                <button class="btn btn-primary" onclick="startQuestionnaire()" >Aloita</button>
+            </div>
+
+            <div id="questionsBlock">
+                <h1>Kysymys</h1>
+                <p id="questionline"></p>
+                <p id="answerBlock"></p>
+            </div>
+
+            <div id="endSummary">
+                <h1>Kooste</h1>
+                <div id="endBlock"></div>
+                <button class="btn btn-primary" onclick="startQuestionnaire()" >Aloita alusta</button>
+            </div>
+        </div>
+
+        <div class="col-md-3 sidebar col-right">
+            <h1>Jotain</h1>
+            <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Minus non voluptates est. Fugiat tempora, ratione hic labore recusandae esse repellat, porro voluptatum, explicabo perspiciatis corporis quisquam quidem vitae placeat molestiae.</p>
+        </div>
+    </div> 
+
+    <div class="row">
+        <p>Tähän tulee ohjeita ja ehkä...</p>
+    </div> 
 </div>
 
 <script src="myClasses.js"></script>

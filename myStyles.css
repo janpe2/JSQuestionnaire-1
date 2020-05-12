@@ -1,0 +1,103 @@
+@font-face 
+{
+    font-family: AcmeRegular;
+    src: url(Acme-Regular.ttf);
+}
+
+body
+{
+    font-family: AcmeRegular;
+}
+
+:root
+{
+    --main-color-1: rgb(184, 218, 250);
+    --main-color-2: rgb(234, 248, 169);
+    --shadow-1: 7px 7px 4px grey;
+}
+
+.col
+{
+    border: 2px solid grey;
+}
+
+.sidebar
+{
+    border: 2px solid grey;
+    background-color: var(--main-color-1);
+    box-shadow: var(--shadow-1);
+    margin-top: 0.40em;
+    margin-bottom: 0.40em;
+}
+
+.col-left
+{
+    z-index: 2;
+    border-bottom-left-radius: 1em;
+}
+
+.col-center
+{
+    border: 2px solid grey;
+    background-color: var(--main-color-2);
+    box-shadow: var(--shadow-1);
+    z-index: 1;
+}
+
+.col-right
+{
+    z-index: 3;
+    border-bottom-right-radius: 1em;
+}
+
+.header
+{
+    text-align: center;
+    background-image: linear-gradient(var(--main-color-1), var(--main-color-2));
+    border: 2px solid grey;
+    border-radius: 1em 1em 0 0; /* top-left top-right bottom-right bottom-left */
+    box-shadow: var(--shadow-1);
+    width: 100%;
+}
+
+tr:nth-child(even) 
+{ 
+    background-color: rgb(185, 238, 125); 
+}
+
+tr:nth-child(even):hover
+{ 
+    background-color: rgb(165, 212, 110); 
+}
+
+tr:nth-child(odd) 
+{ 
+    background-color: rgb(248, 243, 107); 
+}
+
+tr:nth-child(odd):hover
+{ 
+    background-color: rgb(211, 207, 87); 
+}
+
+.answerTableRow:hover
+{
+    background-color: rgb(240, 181, 105);
+}
+
+button.btn
+{
+    margin: 0.20em;
+    margin-right: 1em;
+}
+
+button.btn:hover
+{
+    color: yellow;
+    background-color: rgb(25, 77, 136);
+}
+
+div.col, div.row
+{
+    margin: 0.40em;
+}
